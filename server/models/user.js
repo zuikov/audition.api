@@ -75,11 +75,11 @@ userSchema.virtual('fullName')
   });
 
 userSchema.methods.comparePassword = async function (password) {
-  return this.hashPassword.hash === crypto.pbkdf2Sync(password, this.hashPassword.salt + process.env.SALT, 10000, 256, 'sha256').toString('hex');
+  return this.hashPassword.hash === crypto.pbkdf2Sync(password, this.hashPassword.salt + `${process.env.SALT}`, 10000, 256, 'sha256').toString('hex');
 };
 userSchema.virtual('password').set(function (password) {
   this.hashPassword.salt = crypto.randomBytes(128).toString('base64');
-  this.hashPassword.hash = crypto.pbkdf2Sync(password, this.hashPassword.salt + process.env.SALT, 10000, 256, 'sha256').toString('hex');
+  this.hashPassword.hash = crypto.pbkdf2Sync(password, this.hashPassword.salt + `${process.env.SALT}`, 10000, 256, 'sha256').toString('hex');
 });
 
 module.exports = mongoose.model('User', userSchema);
