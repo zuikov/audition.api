@@ -18,8 +18,9 @@ app.options('*', cors());
 require('dotenv').config();
 
 // set up mongoose
-mongoose.connect(process.env.MONGODB,{ useNewUrlParser: true })
+mongoose.connect(`${process.env.MONGODB}`,{ useNewUrlParser: true })
   .then(()=> {
+    console.log('process.env.MONGODB', process.env.MONGODB);
   })
   .catch((error)=> {
   });
