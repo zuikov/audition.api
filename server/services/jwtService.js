@@ -1,5 +1,4 @@
-// const jwt = require('jsonwebtoken');
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 const Session = require('../models/Session');
 const user = require('../services/userService');
 require('dotenv').config();

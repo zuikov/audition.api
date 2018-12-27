@@ -1,10 +1,10 @@
-import express from 'express';
-import { createUser, loginUser, getAllUsers, getUser } from '../controllers/userController';
-
+const express = require('express');
 const router = express.Router();
+
 const auth = require('../controllers/authController');
 const content = require('../controllers/contentController');
 const middleware = require('../services/middlewareService');
+const user = require('../controllers/userController');
 
 // Content endpoint
 router.post('/playlist', middleware.authorisation, content.create);
@@ -16,8 +16,8 @@ router.delete('/playlist/:listObjectId', middleware.authorisation, content.delet
 // User endpoint
 router.post('/user/signup', auth.signUp);
 router.post('/user/login', auth.signIn);
-router.get('/user', getAllUsers);
-router.get('/user/:userId', getUser);
+router.get('/user', user.getAllUsers);
+router.get('/user/:userId', user.getUser);
 
 // Admin endpoint
 router.post('/admin/auth', auth.verifyAdmin);

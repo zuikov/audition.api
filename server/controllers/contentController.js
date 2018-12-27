@@ -1,7 +1,5 @@
-// import mongoose from 'mongoose';
-// import ListObject from '../models/ListObject';
-
 const content = require('../services/contentService');
+
 require('dotenv').config();
 
 class ContentController {
@@ -49,20 +47,6 @@ class ContentController {
           .then(message => response.send(message))
           .catch(err => response.status(500).send(`${err}`));
     };
-
-    // delete a ListObject
-    // static delete(req, res) {
-    //     const id = req.params.causeId;
-    //     ListObject.findByIdAndRemove(id)
-    //     .exec()
-    //     .then(()=> res.status(200).json({
-    //         success: true,
-    //         message: `ListObject ${id} is deleted`
-    //     }))
-    //     .catch((err) => res.status(500).json({
-    //         success: false,
-    //     }));
-    // }  
 }
 
 module.exports = ContentController;

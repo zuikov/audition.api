@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const crypto = require('crypto');
 require('dotenv').config();
 
@@ -82,4 +82,4 @@ userSchema.virtual('password').set(function (password) {
   this.hashPassword.hash = crypto.pbkdf2Sync(password, this.hashPassword.salt + process.env.SALT, 10000, 256, 'sha256').toString('hex');
 });
 
-export default mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);

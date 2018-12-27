@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+
 mongoose.Promise = global.Promise;
 const listObjectSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
@@ -38,4 +39,4 @@ listObjectSchema.statics.getAll = async function () {
   return playList? playList: null;
 };
 
-export default mongoose.model('ListObject', listObjectSchema);
+module.exports = mongoose.model('ListObject', listObjectSchema);

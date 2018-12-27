@@ -1,5 +1,6 @@
-import mongoose from 'mongoose';
-import ListObject from '../models/listObject';
+const mongoose = require('mongoose');
+
+const ListObject = require('../models/listObject');
 require('dotenv').config();
 
 class ContentActions {

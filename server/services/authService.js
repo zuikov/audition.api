@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-// const User = require('../models/user');
-import User from '../models/user';
+const mongoose = require('mongoose');
+
+const User = require('../models/user');
 const mail = require('./mailService');
 const jwt = require('./jwtService');
 const status = require('../utils/userStatus');

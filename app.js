@@ -1,4 +1,3 @@
-// import dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -15,11 +14,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));
 app.use(cors());
-app.options('*', cors());
+app.options('*', cors()); 
 require('dotenv').config();
 
 // set up mongoose
-mongoose.connect(process.env.MONGODB)
+mongoose.connect(process.env.MONGODB,{ useNewUrlParser: true })
   .then(()=> {
   })
   .catch((error)=> {
