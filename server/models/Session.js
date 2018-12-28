@@ -33,8 +33,8 @@ sessionSchema.method('Equal', function (level, decodedExp) {
   // console.log('this.accessExp', this.accessExp);
   // console.log('decodedExp', decodedExp);
   // console.log('this.refreshExp', this.refreshExp);
-  if (level === `${process.env.ACCESS}`) return decodedExp === this.accessExp;
-  if (level === `${process.env.REFRESH}`) return decodedExp === this.refreshExp;
+  if (level === process.env.ACCESS) return decodedExp === this.accessExp;
+  if (level === process.env.REFRESH) return decodedExp === this.refreshExp;
 
   return decodedExp === this.registrationExp;
 });
