@@ -10,6 +10,7 @@ class ContentController {
     };
 
     static getAll(request, response) {
+        console.log('ContentController starts !');
         content.getAll()
           .then(content => response.send(content))
           .catch(err => response.status(500).send(`${err}`));

@@ -36,6 +36,7 @@ class ContentActions {
     };
 
     static async getAll () {
+        console.log('ContentService starts !');
         const playList = await ListObject.getAll();
         if(!playList) throw new Error('playList is empty');
         return playList;

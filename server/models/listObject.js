@@ -34,8 +34,10 @@ listObjectSchema.statics.checkList = async function (link) {
   return listObject? listObject._id: null;
 };
 
-listObjectSchema.statics.getAll = async function () {
+istObjelctSchema.statics.getAll = async function () {
+  console.log('listObjectSchema.statics.getAll starts !');
   const playList = await this.find().select('_id sectionNumber sectionName title description link');
+  console.log('playList from istObjelctSchema', playList);
   return playList? playList: null;
 };
 
