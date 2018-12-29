@@ -33,15 +33,15 @@ class Auth {
   }
 
   static async confirm (token) {
-    const id = await jwt.verifyJWT(token, process.env.ACCESS);
-    // const id = await jwt.verifyJWT(token, `${process.env.ACCESS}`);
+    // const id = await jwt.verifyJWT(token, process.env.ACCESS);
+    const id = await jwt.verifyJWT(token, `${process.env.ACCESS}`);
     await User.findByIdAndUpdate({'_id':id},{'status':status.confirm});
     return await jwt.generatePairAccessJWT(id);
   }
 
   static async verifyAdmin (token) {
-    const id = await jwt.verifyJWT(token, process.env.ACCESS);
-    // const id = await jwt.verifyJWT(token, `${process.env.ACCESS}`);
+    // const id = await jwt.verifyJWT(token, process.env.ACCESS);
+    const id = await jwt.verifyJWT(token, `${process.env.ACCESS}`);
     const user = await User.findByIdAndUpdate({'_id':id},{'status':status.confirm});
     if (user && user.role === role.admin) {
       return {'message': 'admin status confirmed'};
