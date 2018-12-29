@@ -36,8 +36,9 @@ listObjectSchema.statics.checkList = async function (link) {
 
 listObjectSchema.statics.getAll = async function () {
   console.log('listObjectSchema.statics.getAll starts !');
-  console.log('this.find', this.find);
+  // console.log('this.find', this.find);
   const playList = await this.find().select('_id sectionNumber sectionName title description link');
+  if(!playList) throw new Error('can not get playList');
   console.log('playList from listObjectSchema', playList);
   return playList? playList: null;
 };
