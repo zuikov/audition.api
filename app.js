@@ -3,8 +3,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const cors = require('cors');
-// const dotenv = require('dotenv');
-
 
 const mainRoutes = require('./server/routes/main');
 const homeRoute = require('./server/routes/index');
@@ -29,6 +27,7 @@ mongoose.Promise = global.Promise;
 
 // set up port
 const port = process.env.PORT || 7066;
+console.log('port: ', port);
 
 // set up route
 homeRoute(app);

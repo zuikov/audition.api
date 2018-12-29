@@ -31,11 +31,11 @@ const sessionSchema = new mongoose.Schema(
 );
 sessionSchema.method('Equal', function (level, decodedExp) {
 
-  // if (level === process.env.ACCESS) return decodedExp === this.accessExp;
-  // if (level === process.env.REFRESH) return decodedExp === this.refreshExp;
+  if (level === process.env.ACCESS) return decodedExp === this.accessExp;
+  if (level === process.env.REFRESH) return decodedExp === this.refreshExp;
 
-  if (level === `${process.env.ACCESS}`) return decodedExp === this.accessExp;
-  if (level === `${process.env.REFRESH}`) return decodedExp === this.refreshExp;
+  // if (level === `${process.env.ACCESS}`) return decodedExp === this.accessExp;
+  // if (level === `${process.env.REFRESH}`) return decodedExp === this.refreshExp;
 
   return decodedExp === this.registrationExp;
 });
