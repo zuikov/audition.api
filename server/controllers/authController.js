@@ -4,9 +4,6 @@ require('dotenv').config();
 
 class AuthController {
   static signIn(request, response) {
-    response.header('Access-Control-Allow-Origin', '*');
-    response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    response.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
     auth.signIn(request.body.email, request.body.password)
       .then(tokens => response.send(tokens))
       .catch(err => response.status(401).send(`${err}`));
@@ -19,9 +16,6 @@ class AuthController {
   };
 
   static signUp(request, response) {
-    response.header('Access-Control-Allow-Origin', '*');
-    response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    response.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
     auth.signUp(request.body.username, request.body.email, request.body.password)
       .then(tokens => response.send(tokens))
       .catch(err => response.status(500).send(`${err}`));

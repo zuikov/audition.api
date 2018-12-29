@@ -8,21 +8,24 @@ class JwtService {
     return jwt.sign({
       exp: expires,
       data: id
-    }, process.env.ACCESS);
+    // }, process.env.ACCESS);
+    }, `${process.env.ACCESS}`);
   };
 
   createRefreshJWT(id, expires = Math.floor(Date.now() / 1000) + (60 * 60 * 24 * 60)) {
     return jwt.sign({
       exp: expires,
       data: id
-    }, process.env.REFRESH);
+    // }, process.env.REFRESH);
+    }, `${process.env.REFRESH}`);
   };
 
   createRegistrationJWT(id, expires = Math.floor(Date.now() / 1000) + (60 * 60 * 24)) {
     return jwt.sign({
       exp: expires,
       data: id
-    }, process.env.REGISTER);
+    // }, process.env.REGISTER);
+    }, `${process.env.REGISTER}`);
   };
 
   async generatePairAccessJWT(id) {
@@ -62,13 +65,14 @@ class JwtService {
   };
 
   async refreshAccessPair(token) {
-    const id = await this.verifyJWT(token, process.env.REFRESH);
-    // console.log('id', id);
+    // const id = await this.verifyJWT(token, process.env.REFRESH);
+    const id = await this.verifyJWT(token, `${process.env.REFRESH}`);
     return await this.generatePairAccessJWT(id);
   }
 
   async logOut(token) {
-    const id = await this.verifyJWT(token, process.env.ACCESS);
+    // const id = await this.verifyJWT(token, process.env.ACCESS);
+    const id = await this.verifyJWT(token, `${process.env.ACCESS}`);
     return await Session.findByIdAndUpdate(Session.toId(id), {accessExp: null, refreshExp: null});
 
   }
