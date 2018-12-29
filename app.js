@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const cors = require('cors');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
+
 
 const mainRoutes = require('./server/routes/main');
 const homeRoute = require('./server/routes/index');
