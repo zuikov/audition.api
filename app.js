@@ -18,11 +18,13 @@ app.options('*', cors());
 require('dotenv').config();
 
 // set up mongoose
-mongoose.connect(`${process.env.MONGODB}`,{ useNewUrlParser: true })
+mongoose.connect(`${process.env.MONGOLAB_URI}`,{ useNewUrlParser: true })
   .then(()=> {
-    // console.log('process.env.MONGODB', process.env.MONGODB);
+    console.log('Successfully connected to data base "usersdb"');
   })
-  .catch((error)=> {
+  .catch((err)=> {
+    console.log('Unsuccessfully connected to data base "usersdb"');
+    if (err) throw err;
   });
 mongoose.Promise = global.Promise;
 
